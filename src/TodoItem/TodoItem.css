@@ -1,0 +1,105 @@
+.todo-card {
+  border-top: 1px solid grey;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.todo-title {
+  text-align: left;
+  margin: 0;
+}
+
+.todo-text {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.todo-download {
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  width: 200px;
+  height: auto;
+  border: 1px black solid;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.todo-button-text {
+  margin: 0;
+}
+.button {
+  border-radius: 10px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+}
+.todo-confirm {
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+}
+.todo-completed {
+  text-align: left;
+  font-weight: 600;
+  color: green;
+}
+.todo-delay {
+  text-align: left;
+
+  margin: 0;
+  font-weight: 600;
+  color: red;
+}
+.todo-subtext {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  margin: 0;
+  text-align: left;
+}
+
+.todo-control {
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date {
+  font-weight: 400;
+  color: red;
+}
+
+.button-download {
+  width: 150px;
+}

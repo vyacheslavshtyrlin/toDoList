@@ -1,0 +1,42 @@
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.4s linear;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.popup_opened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 500px;
+  border-radius: 5px;
+  height: 300px;
+  justify-content: space-evenly;
+  background: white;
+  padding: 40px 20px;
+}
+
+.form-input {
+  padding: 2px 4px;
+  height: 20px;
+  border: none;
+
+  border-bottom: 2px solid black;
+  outline: none;
+}

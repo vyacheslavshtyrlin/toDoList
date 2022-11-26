@@ -25,3 +25,4 @@ yarn-error.log*
 src/utils/config.js
 firebase-debug.log
 .gitignore
+.firebase/hosting.YnVpbGQ.cache

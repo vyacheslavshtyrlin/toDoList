@@ -174,7 +174,7 @@ export const Form = ({ edit, isOpen, setOpen, setEdit }) => {
             Отправка..
           </button>
         ) : (
-          <button disabled={disableButton()} className="button" type="submit">
+          <button disabled={disableButton()} className={disableButton() ? 'button button_disabled' : 'button'} type="submit">
             {isEdit ? "Изменить" : "Добавить"}
           </button>
         )}

@@ -14,11 +14,11 @@ export const TodoItem = ({
   onComplete,
   onDownload,
   onDelete,
-  isSubmiting
+  isSubmiting,
 }) => {
   const [delay, setDelay] = useState(false);
   const formatDate = dayjs(item.date).format("DD-MM-YYYY HH:mm:ss");
-console.log(isSubmiting)
+  console.log(isSubmiting);
   useEffect(() => {
     const isDelay = dayjs().isBefore(item.date);
     setDelay(!isDelay);
@@ -35,7 +35,11 @@ console.log(isSubmiting)
         </p>
         {item.fileName && (
           <div className="button-download">
-            <button disabled={isSubmiting}  className="button" onClick={onDownload}>
+            <button
+              disabled={isSubmiting}
+              className={isSubmiting ? "button button_disabled" : "button"}
+              onClick={onDownload}
+            >
               <BsFillArrowDownCircleFill></BsFillArrowDownCircleFill>
               Прикрепленные файлы
             </button>
@@ -55,7 +59,11 @@ console.log(isSubmiting)
                   <BsFillCheckCircleFill></BsFillCheckCircleFill>
                   {"Отметить как выполненное"}
                 </button>
-                <button disabled={isSubmiting} className="button" onClick={onUpdate}>
+                <button
+                  disabled={isSubmiting}
+                  className={isSubmiting ? "button button_disabled" : "button"}
+                  onClick={onUpdate}
+                >
                   <BsFillPencilFill></BsFillPencilFill>
                   Изменить
                 </button>
@@ -63,7 +71,11 @@ console.log(isSubmiting)
             )}
           </>
         )}
-        <button disabled={isSubmiting} onClick={onDelete} className="button">
+        <button
+          disabled={isSubmiting}
+          onClick={onDelete}
+          className={isSubmiting ? "button button_disabled" : "button"}
+        >
           <BsTrash2></BsTrash2>
           Удалить
         </button>

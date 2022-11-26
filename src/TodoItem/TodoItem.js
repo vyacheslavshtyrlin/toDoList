@@ -14,11 +14,11 @@ export const TodoItem = ({
   onComplete,
   onDownload,
   onDelete,
-  isSubmitting
+  isSubmiting
 }) => {
   const [delay, setDelay] = useState(false);
   const formatDate = dayjs(item.date).format("DD-MM-YYYY HH:mm:ss");
-
+console.log(isSubmiting)
   useEffect(() => {
     const isDelay = dayjs().isBefore(item.date);
     setDelay(!isDelay);
@@ -35,7 +35,7 @@ export const TodoItem = ({
         </p>
         {item.fileName && (
           <div className="button-download">
-            <button  className="button" onClick={onDownload}>
+            <button disabled={isSubmiting}  className="button" onClick={onDownload}>
               <BsFillArrowDownCircleFill></BsFillArrowDownCircleFill>
               Прикрепленные файлы
             </button>
@@ -55,7 +55,7 @@ export const TodoItem = ({
                   <BsFillCheckCircleFill></BsFillCheckCircleFill>
                   {"Отметить как выполненное"}
                 </button>
-                <button disabled={isSubmitting} className="button" onClick={onUpdate}>
+                <button disabled={isSubmiting} className="button" onClick={onUpdate}>
                   <BsFillPencilFill></BsFillPencilFill>
                   Изменить
                 </button>
@@ -63,7 +63,7 @@ export const TodoItem = ({
             )}
           </>
         )}
-        <button disabled={isSubmitting} onClick={onDelete} className="button">
+        <button disabled={isSubmiting} onClick={onDelete} className="button">
           <BsTrash2></BsTrash2>
           Удалить
         </button>

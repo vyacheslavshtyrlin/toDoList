@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getAllTodos, deleteTodo, editTodo } from "./utils/firestore";
 import { deleteFile } from "./utils/storage";
 import { TodoItem } from "./TodoItem/TodoItem";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 
 function App() {
@@ -27,16 +27,22 @@ function App() {
     setEdit(i);
   };
 
-  const handleDownload = (item) => {
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = "blob";
-    xhr.onload = (event) => {
-      console.log(event)
-      const blob = xhr.response;
-      saveAs(blob, item.fileName)
-    };
-    xhr.open("GET", item.link);
-    xhr.send();
+  const handleDownload = async (item) => {
+    isSubmiting(true);
+    try {
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = "blob";
+      xhr.onload = (event) => {
+        console.log(event);
+        const blob = xhr.response;
+        saveAs(blob, item.fileName);
+      };
+      xhr.open("GET", item.link);
+      xhr.send();
+    } catch (e) {
+      console.log(e);
+    }
+    isSubmiting(false);
   };
 
   const handleDelete = async (item) => {

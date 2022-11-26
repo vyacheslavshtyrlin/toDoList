@@ -42,6 +42,8 @@
   margin: 0;
 }
 .button {
+  color: black;
+  text-decoration: none;
   border-radius: 10px;
   background-color: transparent;
   outline: none;
@@ -53,6 +55,7 @@
   gap: 10px;
   align-items: center;
   margin: 0;
+  padding: 4px 6px;
 }
 .todo-confirm {
   background-color: transparent;

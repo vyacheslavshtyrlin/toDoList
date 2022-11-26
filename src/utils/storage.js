@@ -10,8 +10,9 @@ import dayjs from "dayjs";
 const BUCKET_URL = "todolistproject-3edcb.appspot.com";
 
 export async function uploadFile(file) {
+  console.log(file)
   const formattedDate = dayjs().format("YYYY-MM-DDTHH:mm");
-  const bucket = `${BUCKET_URL}/files/${formattedDate}`;
+  const bucket = `${BUCKET_URL}/files/${file.name}`;
   await uploadBytes(ref(storage, bucket), file);
   return bucket;
 }

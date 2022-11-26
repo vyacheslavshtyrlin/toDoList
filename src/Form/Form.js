@@ -19,7 +19,6 @@ export const Form = ({ edit, isOpen, setOpen, setEdit }) => {
   const fileRef = useRef();
   const isEdit = Object.keys(edit).length > 0;
   const [formData, setFormData] = useState(isEdit ? edit : defaultValues);
-  const [disabled, setDisabled] = useState(true);
   const [isSubmiting, setSubmiting] = useState(false);
   const styleButton = {
     cursor: "pointer",

@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import { getAllTodos, deleteTodo, editTodo } from "./utils/firestore";
 import { deleteFile } from "./utils/storage";
 import { TodoItem } from "./TodoItem/TodoItem";
+import { saveAs } from 'file-saver';
 import { BsFillPlusSquareFill } from "react-icons/bs";
+
 function App() {
   const [todos, setTodo] = useState([]);
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState({});
-
-  console.log(todos);
+  const [submiting, isSubmiting] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -30,24 +31,32 @@ function App() {
     const xhr = new XMLHttpRequest();
     xhr.responseType = "blob";
     xhr.onload = (event) => {
+      console.log(event)
       const blob = xhr.response;
+      saveAs(blob, item.fileName)
     };
     xhr.open("GET", item.link);
     xhr.send();
   };
 
   const handleDelete = async (item) => {
+    isSubmiting(true);
     try {
       deleteTodo(item.id);
-      if (item.file) {
+      if (item.fileBucket) {
         deleteFile(item.fileBucket);
       }
     } catch (e) {
       console.log(e);
     }
+    isSubmiting(false);
   };
 
+  console.log(submiting);
+
   const toggleComplete = async (item) => {
+    isSubmiting(true);
+
     try {
       editTodo(
         item.id,
@@ -61,6 +70,7 @@ function App() {
     } catch (e) {
       console.log(e);
     }
+    isSubmiting(false);
   };
   return (
     <IconContext.Provider
@@ -86,6 +96,7 @@ function App() {
             {todos.map((i) => (
               <>
                 <TodoItem
+                  isSubmiting={submiting}
                   onUpdate={() => handleUpdate(i)}
                   onDownload={() => handleDownload(i)}
                   onDelete={() => handleDelete(i)}
